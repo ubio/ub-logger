@@ -1,0 +1,26 @@
+{
+  "name": "ub-node-logger",
+  "version": "1.0.0",
+  "description": "Logger component for UB",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive",
+    "check": "eslint ."
+  },
+  "bin": {
+    "log-pretty": "./cli.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "repository": "github:universalbasket/ub-logger",
+  "devDependencies": {
+    "eslint": "3.14.0",
+    "eslint-config-ub": "1.0.4",
+    "mocha": "3.2.0",
+    "sandboxed-module": "2.0.3",
+    "sinon": "1.17.7"
+  },
+  "dependencies": {
+    "json-stringify-safe": "5.0.1"
+  }
+}
