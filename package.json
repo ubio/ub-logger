@@ -10,6 +10,11 @@
   "bin": {
     "log-pretty": "./cli.js"
   },
+  "files": [
+    "cli.js",
+    "index.js",
+    "lib"
+  ],
   "author": "",
   "license": "MIT",
   "repository": "github:universalbasket/ub-logger",
