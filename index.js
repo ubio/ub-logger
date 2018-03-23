@@ -16,7 +16,7 @@ function makePrettyStreams(service, version) {
         { severity: 'info', stream: out },
         { severity: 'warning', stream: out },
         { severity: 'error', stream: out },
-        { severity: 'alert', stream: out },
+        { severity: 'alert', stream: out }
     ];
 }
 
@@ -32,7 +32,7 @@ function makeProductionStreams(service, version) {
         { severity: 'info', stream: out },
         { severity: 'warning', stream: out },
         { severity: 'error', stream: err },
-        { severity: 'alert', stream: err },
+        { severity: 'alert', stream: err }
     ];
 }
 

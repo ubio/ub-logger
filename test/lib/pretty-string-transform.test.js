@@ -9,13 +9,13 @@ function pusher(logObjects) {
 
     const readable = new stream.Readable({ objectMode: true });
     const transform = new PrettyStringTransform({
-        serviceContext: { service: 'the-service', version: 'the-version' },
+        serviceContext: { service: 'the-service', version: 'the-version' }
     });
     const writable = new stream.Writable({
         write(chunk, encoding, callback) {
             written += chunk;
             callback();
-        },
+        }
     });
 
     return new Promise((resolve, reject) => {
@@ -62,7 +62,7 @@ describe('PrettyStringTransform', () => {
 
         it('logs a line with a request ID when a request ID is included', () => {
             const logObjects = [
-                { severity: 'debug', eventTime: 'the-event-time', context: { requestId: 'the-request-id' } },
+                { severity: 'debug', eventTime: 'the-event-time', context: { requestId: 'the-request-id' } }
             ];
             const expected = `[the-event-time] \u001b[90mDEBUG\u001b[39m ${process.pid} the-service@the-version (requestId the-request-id)\n`;
 
@@ -74,20 +74,20 @@ describe('PrettyStringTransform', () => {
                 {
                     severity: 'debug',
                     eventTime: 'the-event-time',
-                    message: 'first-message',
+                    message: 'first-message'
                 },
                 {
                     severity: 'debug',
                     eventTime: 'another-event-time',
                     message: 'second-message',
-                    context: { requestId: 'the-request-id' },
-                },
+                    context: { requestId: 'the-request-id' }
+                }
             ];
 
             const expected = [
                 `[the-event-time] \u001b[90mDEBUG\u001b[39m ${process.pid} the-service@the-version \u001b[90mfirst-message\u001b[39m`,
                 `[another-event-time] \u001b[90mDEBUG\u001b[39m ${process.pid} the-service@the-version (requestId the-request-id) \u001b[90msecond-message\u001b[39m`,
-                '',
+                ''
             ].join('\n');
 
             return pusher(logObjects).then(logged => assert.equal(logged, expected));
@@ -95,7 +95,7 @@ describe('PrettyStringTransform', () => {
 
         it('logs a user on the line below when given', () => {
             const logObjects = [
-                { severity: 'debug', eventTime: 'the-event-time', context: { user: 'a-user' } },
+                { severity: 'debug', eventTime: 'the-event-time', context: { user: 'a-user' } }
             ];
 
             const expected = `[the-event-time] \u001b[90mDEBUG\u001b[39m ${process.pid} the-service@the-version\nuser: a-user\n`;
@@ -108,8 +108,8 @@ describe('PrettyStringTransform', () => {
                 {
                     severity: 'debug',
                     eventTime: 'the-event-time',
-                    context: { user: 'a-user', httpRequest: { request: true } },
-                },
+                    context: { user: 'a-user', httpRequest: { request: true } }
+                }
             ];
 
             const expected = `[the-event-time] \u001b[90mDEBUG\u001b[39m ${process.pid} the-service@the-version\nuser: a-user\nrequest: {\n  "request": true\n}\n`;
@@ -128,7 +128,7 @@ describe('PrettyStringTransform', () => {
 
         it('logs a line with a request ID when a request ID is included', () => {
             const logObjects = [
-                { severity: 'info', eventTime: 'the-event-time', context: { requestId: 'the-request-id' } },
+                { severity: 'info', eventTime: 'the-event-time', context: { requestId: 'the-request-id' } }
             ];
             const expected = `[the-event-time] \u001b[32mINFO\u001b[39m ${process.pid} the-service@the-version (requestId the-request-id)\n`;
 
@@ -140,20 +140,20 @@ describe('PrettyStringTransform', () => {
                 {
                     severity: 'info',
                     eventTime: 'the-event-time',
-                    message: 'first-message',
+                    message: 'first-message'
                 },
                 {
                     severity: 'info',
                     eventTime: 'another-event-time',
                     message: 'second-message',
-                    context: { requestId: 'the-request-id' },
-                },
+                    context: { requestId: 'the-request-id' }
+                }
             ];
 
             const expected = [
                 `[the-event-time] \u001b[32mINFO\u001b[39m ${process.pid} the-service@the-version \u001b[32mfirst-message\u001b[39m`,
                 `[another-event-time] \u001b[32mINFO\u001b[39m ${process.pid} the-service@the-version (requestId the-request-id) \u001b[32msecond-message\u001b[39m`,
-                '',
+                ''
             ].join('\n');
 
             return pusher(logObjects).then(logged => assert.equal(logged, expected));
@@ -161,7 +161,7 @@ describe('PrettyStringTransform', () => {
 
         it('logs a user on the line below when given', () => {
             const logObjects = [
-                { severity: 'info', eventTime: 'the-event-time', context: { user: 'a-user' } },
+                { severity: 'info', eventTime: 'the-event-time', context: { user: 'a-user' } }
             ];
 
             const expected = `[the-event-time] \u001b[32mINFO\u001b[39m ${process.pid} the-service@the-version\nuser: a-user\n`;
@@ -174,8 +174,8 @@ describe('PrettyStringTransform', () => {
                 {
                     severity: 'info',
                     eventTime: 'the-event-time',
-                    context: { user: 'a-user', httpRequest: { request: true } },
-                },
+                    context: { user: 'a-user', httpRequest: { request: true } }
+                }
             ];
 
             const expected = `[the-event-time] \u001b[32mINFO\u001b[39m ${process.pid} the-service@the-version\nuser: a-user\nrequest: {\n  "request": true\n}\n`;
@@ -194,7 +194,7 @@ describe('PrettyStringTransform', () => {
 
         it('logs a line with a request ID when a request ID is included', () => {
             const logObjects = [
-                { severity: 'warning', eventTime: 'the-event-time', context: { requestId: 'the-request-id' } },
+                { severity: 'warning', eventTime: 'the-event-time', context: { requestId: 'the-request-id' } }
             ];
             const expected = `[the-event-time] \u001b[33mWARNING\u001b[39m ${process.pid} the-service@the-version (requestId the-request-id)\n`;
 
@@ -206,20 +206,20 @@ describe('PrettyStringTransform', () => {
                 {
                     severity: 'warning',
                     eventTime: 'the-event-time',
-                    message: 'first-message',
+                    message: 'first-message'
                 },
                 {
                     severity: 'warning',
                     eventTime: 'another-event-time',
                     message: 'second-message',
-                    context: { requestId: 'the-request-id' },
-                },
+                    context: { requestId: 'the-request-id' }
+                }
             ];
 
             const expected = [
                 `[the-event-time] \u001b[33mWARNING\u001b[39m ${process.pid} the-service@the-version \u001b[33mfirst-message\u001b[39m`,
                 `[another-event-time] \u001b[33mWARNING\u001b[39m ${process.pid} the-service@the-version (requestId the-request-id) \u001b[33msecond-message\u001b[39m`,
-                '',
+                ''
             ].join('\n');
 
             return pusher(logObjects).then(logged => assert.equal(logged, expected));
@@ -227,7 +227,7 @@ describe('PrettyStringTransform', () => {
 
         it('logs a user on the line below when given', () => {
             const logObjects = [
-                { severity: 'warning', eventTime: 'the-event-time', context: { user: 'a-user' } },
+                { severity: 'warning', eventTime: 'the-event-time', context: { user: 'a-user' } }
             ];
 
             const expected = `[the-event-time] \u001b[33mWARNING\u001b[39m ${process.pid} the-service@the-version\nuser: a-user\n`;
@@ -240,8 +240,8 @@ describe('PrettyStringTransform', () => {
                 {
                     severity: 'warning',
                     eventTime: 'the-event-time',
-                    context: { user: 'a-user', httpRequest: { request: true } },
-                },
+                    context: { user: 'a-user', httpRequest: { request: true } }
+                }
             ];
 
             const expected = `[the-event-time] \u001b[33mWARNING\u001b[39m ${process.pid} the-service@the-version\nuser: a-user\nrequest: {\n  "request": true\n}\n`;
@@ -260,7 +260,7 @@ describe('PrettyStringTransform', () => {
 
         it('logs a line with a request ID when a request ID is included', () => {
             const logObjects = [
-                { severity: 'error', eventTime: 'the-event-time', context: { requestId: 'the-request-id' } },
+                { severity: 'error', eventTime: 'the-event-time', context: { requestId: 'the-request-id' } }
             ];
             const expected = `[the-event-time] \u001b[31mERROR\u001b[39m ${process.pid} the-service@the-version (requestId the-request-id)\n`;
 
@@ -272,20 +272,20 @@ describe('PrettyStringTransform', () => {
                 {
                     severity: 'error',
                     eventTime: 'the-event-time',
-                    message: 'first-message',
+                    message: 'first-message'
                 },
                 {
                     severity: 'error',
                     eventTime: 'another-event-time',
                     message: 'second-message',
-                    context: { requestId: 'the-request-id' },
-                },
+                    context: { requestId: 'the-request-id' }
+                }
             ];
 
             const expected = [
                 `[the-event-time] \u001b[31mERROR\u001b[39m ${process.pid} the-service@the-version \u001b[31mfirst-message\u001b[39m`,
                 `[another-event-time] \u001b[31mERROR\u001b[39m ${process.pid} the-service@the-version (requestId the-request-id) \u001b[31msecond-message\u001b[39m`,
-                '',
+                ''
             ].join('\n');
 
             return pusher(logObjects).then(logged => assert.equal(logged, expected));
@@ -293,7 +293,7 @@ describe('PrettyStringTransform', () => {
 
         it('logs a user on the line below when given', () => {
             const logObjects = [
-                { severity: 'error', eventTime: 'the-event-time', context: { user: 'a-user' } },
+                { severity: 'error', eventTime: 'the-event-time', context: { user: 'a-user' } }
             ];
 
             const expected = `[the-event-time] \u001b[31mERROR\u001b[39m ${process.pid} the-service@the-version\nuser: a-user\n`;
@@ -306,8 +306,8 @@ describe('PrettyStringTransform', () => {
                 {
                     severity: 'error',
                     eventTime: 'the-event-time',
-                    context: { user: 'a-user', httpRequest: { request: true } },
-                },
+                    context: { user: 'a-user', httpRequest: { request: true } }
+                }
             ];
 
             const expected = `[the-event-time] \u001b[31mERROR\u001b[39m ${process.pid} the-service@the-version\nuser: a-user\nrequest: {\n  "request": true\n}\n`;
@@ -326,7 +326,7 @@ describe('PrettyStringTransform', () => {
 
         it('logs a line with a request ID when a request ID is included', () => {
             const logObjects = [
-                { severity: 'alert', eventTime: 'the-event-time', context: { requestId: 'the-request-id' } },
+                { severity: 'alert', eventTime: 'the-event-time', context: { requestId: 'the-request-id' } }
             ];
             const expected = `[the-event-time] \u001b[7m\u001b[31mALERT\u001b[39m\u001b[27m ${process.pid} the-service@the-version (requestId the-request-id)\n`;
 
@@ -338,20 +338,20 @@ describe('PrettyStringTransform', () => {
                 {
                     severity: 'alert',
                     eventTime: 'the-event-time',
-                    message: 'first-message',
+                    message: 'first-message'
                 },
                 {
                     severity: 'alert',
                     eventTime: 'another-event-time',
                     message: 'second-message',
-                    context: { requestId: 'the-request-id' },
-                },
+                    context: { requestId: 'the-request-id' }
+                }
             ];
 
             const expected = [
                 `[the-event-time] \u001b[7m\u001b[31mALERT\u001b[39m\u001b[27m ${process.pid} the-service@the-version \u001b[7m\u001b[31mfirst-message\u001b[39m\u001b[27m`,
                 `[another-event-time] \u001b[7m\u001b[31mALERT\u001b[39m\u001b[27m ${process.pid} the-service@the-version (requestId the-request-id) \u001b[7m\u001b[31msecond-message\u001b[39m\u001b[27m`,
-                '',
+                ''
             ].join('\n');
 
             return pusher(logObjects).then(logged => assert.equal(logged, expected));
@@ -359,7 +359,7 @@ describe('PrettyStringTransform', () => {
 
         it('logs a user on the line below when given', () => {
             const logObjects = [
-                { severity: 'alert', eventTime: 'the-event-time', context: { user: 'a-user' } },
+                { severity: 'alert', eventTime: 'the-event-time', context: { user: 'a-user' } }
             ];
 
             const expected = `[the-event-time] \u001b[7m\u001b[31mALERT\u001b[39m\u001b[27m ${process.pid} the-service@the-version\nuser: a-user\n`;
@@ -372,8 +372,8 @@ describe('PrettyStringTransform', () => {
                 {
                     severity: 'alert',
                     eventTime: 'the-event-time',
-                    context: { user: 'a-user', httpRequest: { request: true } },
-                },
+                    context: { user: 'a-user', httpRequest: { request: true } }
+                }
             ];
 
             const expected = `[the-event-time] \u001b[7m\u001b[31mALERT\u001b[39m\u001b[27m ${process.pid} the-service@the-version\nuser: a-user\nrequest: {\n  "request": true\n}\n`;
