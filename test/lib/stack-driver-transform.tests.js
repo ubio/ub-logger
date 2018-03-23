@@ -8,14 +8,14 @@ function pusher(logObjects) {
     const written = [];
     const readable = new stream.Readable({ objectMode: true });
     const transform = new StackDriverTransform({
-        serviceContext: { service: 'the-service', version: 'the-version' },
+        serviceContext: { service: 'the-service', version: 'the-version' }
     });
     const writable = new stream.Writable({
         write(chunk, encoding, callback) {
             written.push(chunk);
             callback();
         },
-        objectMode: true,
+        objectMode: true
     });
 
     return new Promise((resolve, reject) => {
@@ -167,15 +167,15 @@ describe('stack-driver-transform', () => {
                         status: 'the-status',
                         headers: {
                             'user-agent': 'the-user-agent',
-                            referer: 'the-referrer',
+                            referer: 'the-referrer'
                         },
                         request: {
                             method: 'the-method',
                             url: 'the-url',
-                            ip: 'the-ip',
-                        },
-                    },
-                },
+                            ip: 'the-ip'
+                        }
+                    }
+                }
             }];
 
             return pusher(logObjects)
@@ -187,7 +187,7 @@ describe('stack-driver-transform', () => {
                         responseStatusCode: 'the-status',
                         referrer: 'the-referrer',
                         userAgent: 'the-user-agent',
-                        remoteIp: 'the-ip',
+                        remoteIp: 'the-ip'
                     });
                 });
         });

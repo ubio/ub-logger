@@ -26,7 +26,7 @@ describe('makeLogger', () => {
         streams = [
             { severity: 'debug', stream: new BufferingWritable() },
             { severity: 'info', stream: new BufferingWritable() },
-            { severity: 'error', stream: new BufferingWritable() },
+            { severity: 'error', stream: new BufferingWritable() }
         ];
 
         sandbox.stub(Date.prototype, 'toISOString').returns('a-time');
@@ -65,7 +65,7 @@ describe('makeLogger', () => {
             severity: 'debug',
             message: 'Hello, world!',
             context: 'context',
-            eventTime: 'a-time',
+            eventTime: 'a-time'
         }]);
     });
 
@@ -84,14 +84,14 @@ describe('makeLogger', () => {
             severity: 'info',
             message: 'some info',
             context: 'info context',
-            eventTime: 'a-time',
+            eventTime: 'a-time'
         }]);
 
         assert.deepEqual(streams[2].stream.buffer, [{
             severity: 'error',
             message: 'some error',
             context: 'error context',
-            eventTime: 'a-time',
+            eventTime: 'a-time'
         }]);
     });
 

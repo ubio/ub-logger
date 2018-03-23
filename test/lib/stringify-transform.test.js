@@ -19,7 +19,7 @@ describe('StringifyTransform', () => {
             write(chunk, encoding, callback) {
                 written += chunk;
                 callback();
-            },
+            }
         });
 
         transform = new StringifyTransform();

@@ -18,21 +18,21 @@ describe('ub-node-logger', () => {
                         write(chunk, encoding, callback) {
                             stdoutWritten += chunk;
                             callback();
-                        },
+                        }
                     }),
                     stderr: new stream.Writable({
                         write(chunk, encoding, callback) {
                             stderrWritten += chunk;
                             callback();
-                        },
-                    }),
+                        }
+                    })
                 },
                 Date: class {
                     toISOString() {
                         return 'the-time';
                     }
-                },
-            },
+                }
+            }
         });
     });
 
@@ -66,8 +66,8 @@ describe('ub-node-logger', () => {
                         eventTime: 'the-time',
                         serviceContext: {
                             service: 'the-service',
-                            version: 'the-version',
-                        },
+                            version: 'the-version'
+                        }
                     });
                 });
 
@@ -88,8 +88,8 @@ describe('ub-node-logger', () => {
                         eventTime: 'the-time',
                         serviceContext: {
                             service: 'the-service',
-                            version: 'the-version',
-                        },
+                            version: 'the-version'
+                        }
                     });
                 });
 
@@ -110,8 +110,8 @@ describe('ub-node-logger', () => {
                         eventTime: 'the-time',
                         serviceContext: {
                             service: 'the-service',
-                            version: 'the-version',
-                        },
+                            version: 'the-version'
+                        }
                     });
                 });
 
@@ -132,8 +132,8 @@ describe('ub-node-logger', () => {
                         eventTime: 'the-time',
                         serviceContext: {
                             service: 'the-service',
-                            version: 'the-version',
-                        },
+                            version: 'the-version'
+                        }
                     });
                 });
 
@@ -154,8 +154,8 @@ describe('ub-node-logger', () => {
                         eventTime: 'the-time',
                         serviceContext: {
                             service: 'the-service',
-                            version: 'the-version',
-                        },
+                            version: 'the-version'
+                        }
                     });
                 });
 
@@ -206,8 +206,8 @@ describe('ub-node-logger', () => {
                         eventTime: 'the-time',
                         serviceContext: {
                             service: 'the-service',
-                            version: 'the-version',
-                        },
+                            version: 'the-version'
+                        }
                     });
                 });
 
@@ -228,8 +228,8 @@ describe('ub-node-logger', () => {
                         eventTime: 'the-time',
                         serviceContext: {
                             service: 'the-service',
-                            version: 'the-version',
-                        },
+                            version: 'the-version'
+                        }
                     });
                 });
 
@@ -250,8 +250,8 @@ describe('ub-node-logger', () => {
                         eventTime: 'the-time',
                         serviceContext: {
                             service: 'the-service',
-                            version: 'the-version',
-                        },
+                            version: 'the-version'
+                        }
                     });
                 });
 
