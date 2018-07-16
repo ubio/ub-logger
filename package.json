@@ -1,6 +1,6 @@
 {
   "name": "ub-node-logger",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Logger component for UB",
   "main": "index.js",
   "scripts": {
