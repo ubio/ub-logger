@@ -19,11 +19,11 @@
   "license": "MIT",
   "repository": "github:universalbasket/ub-logger",
   "devDependencies": {
-    "eslint": "^4.19.1",
+    "eslint": "^5.1.0",
     "eslint-config-ub": "^3.0.0",
-    "mocha": "^5.0.5",
+    "mocha": "^5.2.0",
     "sandboxed-module": "^2.0.3",
-    "sinon": "^4.4.8"
+    "sinon": "^6.1.3"
   },
   "dependencies": {
     "json-stringify-safe": "^5.0.1"
