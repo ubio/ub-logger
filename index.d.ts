@@ -1,14 +1,14 @@
-declare function ubNodeLogger(options: ubNodeLogger.options): ubNodeLogger.logger
+declare function ubNodeLogger(options: ubNodeLogger.LoggerOptions): ubNodeLogger.Logger
 
 declare namespace ubNodeLogger {
-    export interface options {
+    export interface LoggerOptions {
         severity: string,
         mode?: string,
         service: string,
         version: string
     }
 
-    export interface logger {
+    export interface Logger {
         debug(message: string, details?: object): void,
         info(message: string, details?: object): void,
         warning(message: string, details?: object): void,
