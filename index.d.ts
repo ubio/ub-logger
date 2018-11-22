@@ -1,6 +1,6 @@
-declare function ubNodeLogger(options: ubNodeLogger.LoggerOptions): ubNodeLogger.Logger
+declare function ubioLogger(options: ubioLogger.LoggerOptions): ubioLogger.Logger
 
-declare namespace ubNodeLogger {
+declare namespace ubioLogger {
     export interface LoggerOptions {
         severity: string,
         mode?: string,
@@ -17,4 +17,4 @@ declare namespace ubNodeLogger {
     }
 }
 
-export = ubNodeLogger;
+export = ubioLogger;
