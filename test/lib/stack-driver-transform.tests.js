@@ -181,10 +181,10 @@ describe('stack-driver-transform', () => {
             return pusher(logObjects)
                 .then(results => {
                     assert.equal(results.length, 1);
-                    assert.deepEqual(results[0].context.httpRequest, {
-                        method: 'the-method',
-                        url: 'the-url',
-                        responseStatusCode: 'the-status',
+                    assert.deepEqual(results[0].httpRequest, {
+                        requestMethod: 'the-method',
+                        requestUrl: 'the-url',
+                        status: 'the-status',
                         referrer: 'the-referrer',
                         userAgent: 'the-user-agent',
                         remoteIp: 'the-ip'
