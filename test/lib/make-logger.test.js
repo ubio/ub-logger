@@ -56,7 +56,7 @@ describe('makeLogger', () => {
     it('logs a message and context with ISO eventTime to the designated stream when the severity is enabled', () => {
         const log = makeLogger(streams, 'debug');
 
-        log.debug('Hello, world!', 'context');
+        log.debug('Hello, world!', { detail: 'context' });
 
         assert.equal(streams[0].stream.buffer.length, 1);
         assert.equal(streams[1].stream.buffer.length, 0);
@@ -64,7 +64,7 @@ describe('makeLogger', () => {
         assert.deepEqual(streams[0].stream.buffer, [{
             severity: 'debug',
             message: 'Hello, world!',
-            context: 'context',
+            detail: 'context',
             eventTime: 'a-time'
         }]);
     });
@@ -72,9 +72,9 @@ describe('makeLogger', () => {
     it('does not log a message or context to the designated stream when the severity is disabled', () => {
         const log = makeLogger(streams, 'info');
 
-        log.debug('some debug', 'debug context');
-        log.info('some info', 'info context');
-        log.error('some error', 'error context');
+        log.debug('some debug', { detail: 'debug detail' });
+        log.info('some info', { detail: 'info detail' });
+        log.error('some error', { detail: 'error detail' });
 
         assert.equal(streams[0].stream.buffer.length, 0);
         assert.equal(streams[1].stream.buffer.length, 1);
@@ -83,14 +83,14 @@ describe('makeLogger', () => {
         assert.deepEqual(streams[1].stream.buffer, [{
             severity: 'info',
             message: 'some info',
-            context: 'info context',
+            detail: 'info detail',
             eventTime: 'a-time'
         }]);
 
         assert.deepEqual(streams[2].stream.buffer, [{
             severity: 'error',
             message: 'some error',
-            context: 'error context',
+            detail: 'error detail',
             eventTime: 'a-time'
         }]);
     });
