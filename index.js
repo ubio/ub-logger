@@ -14,6 +14,7 @@ function makePrettyStreams(service, version) {
     return [
         { severity: 'debug', stream: out },
         { severity: 'info', stream: out },
+        { severity: 'metric', stream: out, isMetric: true },
         { severity: 'warning', stream: out },
         { severity: 'error', stream: out },
         { severity: 'alert', stream: out }
