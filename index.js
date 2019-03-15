@@ -30,6 +30,7 @@ function makeProductionStreams(service, version) {
     return [
         { severity: 'debug', stream: out },
         { severity: 'info', stream: out },
+        { severity: 'metric', stream: out, isMetric: true },
         { severity: 'warning', stream: out },
         { severity: 'error', stream: err },
         { severity: 'alert', stream: err }
