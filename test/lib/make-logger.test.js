@@ -26,7 +26,8 @@ describe('makeLogger', () => {
         streams = [
             { severity: 'debug', stream: new BufferingWritable() },
             { severity: 'info', stream: new BufferingWritable() },
-            { severity: 'error', stream: new BufferingWritable() }
+            { severity: 'error', stream: new BufferingWritable() },
+            { severity: 'info', alias: 'metric', stream: new BufferingWritable(), additional: { isMetric: true } }
         ];
 
         sandbox.stub(Date.prototype, 'toISOString').returns('a-time');
@@ -66,6 +67,24 @@ describe('makeLogger', () => {
             message: 'Hello, world!',
             detail: 'context',
             eventTime: 'a-time'
+        }]);
+    });
+
+    it('allows additional data mixed into json payload', () => {
+        const log = makeLogger(streams, 'info');
+
+        log.metric('Hello, world!', { detail: 'context' });
+
+        assert.equal(streams[0].stream.buffer.length, 0);
+        assert.equal(streams[1].stream.buffer.length, 0);
+        assert.equal(streams[2].stream.buffer.length, 0);
+        assert.equal(streams[3].stream.buffer.length, 1);
+        assert.deepEqual(streams[3].stream.buffer, [{
+            severity: 'info',
+            message: 'Hello, world!',
+            detail: 'context',
+            eventTime: 'a-time',
+            isMetric: true
         }]);
     });
 
