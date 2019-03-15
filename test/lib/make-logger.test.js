@@ -84,7 +84,7 @@ describe('makeLogger', () => {
             severity: 'info',
             message: 'some info',
             detail: 'info detail',
-            eventTime: 'a-time',
+            eventTime: 'a-time'
         }]);
 
         assert.deepEqual(streams[2].stream.buffer, [{
