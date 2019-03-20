@@ -9,11 +9,12 @@ declare namespace ubioLogger {
     }
 
     export interface Logger {
-        debug(message: string, details?: object): void,
-        info(message: string, details?: object): void,
-        warning(message: string, details?: object): void,
-        error(message: string, details?: object): void,
-        alert(message: string, details?: object): void
+        metric(message: string, details?: object): void;
+        debug(message: string, details?: object): void;
+        info(message: string, details?: object): void;
+        warning(message: string, details?: object): void;
+        error(message: string, details?: object): void;
+        alert(message: string, details?: object): void;
     }
 }
 
