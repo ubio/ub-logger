@@ -16,6 +16,7 @@ function makePrettyStreams(service, version) {
         { severity: 'info', stream: out },
         { severity: 'info', alias: 'metric', stream: out, additional: { isMetric: true } },
         { severity: 'warning', stream: out },
+        { severity: 'warning', alias: 'warn', stream: out },
         { severity: 'error', stream: out },
         { severity: 'alert', stream: out }
     ];
@@ -33,6 +34,7 @@ function makeProductionStreams(service, version) {
         { severity: 'info', stream: out },
         { severity: 'info', alias: 'metric', stream: out, additional: { isMetric: true } },
         { severity: 'warning', stream: out },
+        { severity: 'warning', alias: 'warn', stream: out },
         { severity: 'error', stream: err },
         { severity: 'alert', stream: err }
     ];
