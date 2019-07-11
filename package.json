@@ -20,7 +20,7 @@
   "license": "MIT",
   "repository": "github:universalbasket/ub-logger",
   "devDependencies": {
-    "eslint": "^5.16.0",
+    "eslint": "^6.0.1",
     "eslint-config-ub": "^3.0.0",
     "mocha": "^6.1.4",
     "sandboxed-module": "^2.0.3",
