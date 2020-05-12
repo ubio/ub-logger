@@ -22,7 +22,7 @@
   "devDependencies": {
     "eslint": "^6.2.2",
     "eslint-config-ub": "^3.0.0",
-    "mocha": "^6.2.0",
+    "mocha": "^7.1.2",
     "sandboxed-module": "^2.0.3",
     "sinon": "^7.4.1"
   },
