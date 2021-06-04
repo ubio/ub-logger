@@ -1,6 +1,6 @@
 {
   "name": "@ubio/logger",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Logger component for UB",
   "main": "index.js",
   "scripts": {
